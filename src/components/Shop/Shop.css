@@ -31,4 +31,9 @@
     font-size: 20px;
     font-weight: 900;
     border-radius: 500 ;
+    margin-bottom: 40px;
+}
+
+.pagination button {
+    margin-right: 10px;
 }

@@ -8,8 +8,8 @@ import { Link, useLoaderData } from 'react-router-dom';
 const Shop = () => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([])
+    const [itemsPerPage,setItemsPerPage] = useState(10);
     const {count} = useLoaderData();
-    const itemsPerPage = 10;
     const numberOfPages = Math.ceil(count / itemsPerPage)
     // console.log(count)
     // const pages = [];
@@ -21,7 +21,7 @@ const Shop = () => {
     // another moder 
     const pages = [...Array(numberOfPages).keys()]
     
-    console.log(pages)
+    // console.log(pages)
     useEffect(() => {
         fetch('http://localhost:5000/products')
             .then(res => res.json())
@@ -74,6 +74,12 @@ const Shop = () => {
         deleteShoppingCart();
     }
 
+    const handleItemsPerPage = (e) =>{
+        const val = parseInt(e.target.value)
+        console.log(val)
+        setItemsPerPage(val)
+        // ekhon select korle eita page onushare change hoye jabe .prottekta  page bagh kore diye onek interestiong 
+    }
     return (
         <div className='shop-container'>
             <div className="products-container">
@@ -99,6 +105,11 @@ const Shop = () => {
                 {
                     pages.map(page => <button key={page}>{page}</button>)
                 }
+                <select value={itemsPerPage} onChange={handleItemsPerPage} name="" id="">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                </select>
             </div>
         </div>
     );
