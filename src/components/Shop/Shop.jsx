@@ -9,9 +9,19 @@ const Shop = () => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([])
     const {count} = useLoaderData();
+    const itemsPerPage = 10;
+    const numberOfPages = Math.ceil(count / itemsPerPage)
+    // console.log(count)
+    // const pages = [];
 
-    console.log(count)
+    // for(let i = 0; i < numberOfPages ; i++){
+    //     pages.push(i);
+    // }
 
+    // another moder 
+    const pages = [...Array(numberOfPages).keys()]
+    
+    console.log(pages)
     useEffect(() => {
         fetch('http://localhost:5000/products')
             .then(res => res.json())
@@ -84,6 +94,11 @@ const Shop = () => {
                         <button className='btn-proceed'>Review Order</button>
                     </Link>
                 </Cart>
+            </div>
+            <div className='pagination'>
+                {
+                    pages.map(page => <button key={page}>{page}</button>)
+                }
             </div>
         </div>
     );
