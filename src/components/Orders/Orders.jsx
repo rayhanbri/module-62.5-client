@@ -6,6 +6,7 @@ import './Orders.css';
 import { deleteShoppingCart, removeFromDb } from '../../utilities/fakedb';
 
 const Orders = () => {
+    // ei use loader tah kotteke asteche ei kujar jonno ctrl + shift diye search kore just ekta angle bracket boshai dile hobe it
     const savedCart = useLoaderData();
     const [cart, setCart] = useState(savedCart);
 
