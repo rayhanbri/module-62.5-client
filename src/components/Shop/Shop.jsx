@@ -126,7 +126,9 @@ const Shop = () => {
                 <button onClick={handlePrevPage}>Prev</button>
                 {
                     pages.map(page => <button 
-                        className={currentPage ===  page && 'selected'}
+                        // ei ta comment kore dichi karon ei ta dile error dibe 
+                        // className={currentPage ===  page && 'selected'}
+                        className={currentPage ===  page ? 'selected' : undefined}
                         onClick={()=>setCurrentPage(page)}
                         // now set a css class selected
                         eta dropdown e click korle  error dhibe 
